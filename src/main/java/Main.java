@@ -24,7 +24,7 @@ public class Main {
         // create the red player, any subclass of Agent
         Agent redPlayer = new RandomAgent(game, true);
         // create the yellow player, any subclass of Agent
-        Agent yellowPlayer = new BeginnerAgent(game, false);
+        Agent yellowPlayer = new IntermediateAgent(game, false);
         // create the game window
         @SuppressWarnings("unused")
         Connect4Frame mainframe = new Connect4Frame(game, redPlayer, yellowPlayer);
