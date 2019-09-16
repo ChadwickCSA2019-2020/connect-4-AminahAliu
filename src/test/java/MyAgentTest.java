@@ -135,7 +135,26 @@ public class MyAgentTest {
       yellowAgent.moveOnColumn(i);
     }
 
-  // TODO: Write testTheyCanWinDiagonally
+    assertEquals(redAgent.theyCanWin(), 4);
+  }
+
+  //Tests they can win diagonally
+  @Test
+  public void testTheyCanWinDiagonally() {
+    MyAgent redAgent = new MyAgent(game, true);
+    MyAgent yellowAgent = new MyAgent(game, false);
+    game.clearBoard();
+    redAgent.moveOnColumn(3);
+    yellowAgent.moveOnColumn(4);
+    redAgent.moveOnColumn(4);
+    yellowAgent.moveOnColumn(1);
+    for (int i = 1; i < 5; i++) {
+      yellowAgent.moveOnColumn(i);
+      redAgent.moveOnColumn(i+1);
+    }
+
+    assertEquals(redAgent.theyCanWin(), 4);
+  }
 
   // Tests you can win against a Beginner agent as Red
   @Test
