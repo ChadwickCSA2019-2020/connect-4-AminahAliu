@@ -1,3 +1,6 @@
+//don't have to worry about checkstyle for test cases
+// do command a then command i to reformat code
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -5,7 +8,8 @@ import org.junit.Test;
 
 public class MyAgentTest {
 
-  Connect4Game game; 
+  Connect4Game game;
+
 
 
   @Before
@@ -27,6 +31,7 @@ public class MyAgentTest {
 
   }
 
+  //Tests you can win vertically in the top 4
   @Test
   public void testICanWinVerticallyTop4() {
     MyAgent redAgent = new MyAgent(game, true);
@@ -110,6 +115,7 @@ public class MyAgentTest {
     assertEquals(redAgent.iCanWin(), 4);
   }
 
+  //Tests they can win
   @Test
   public void testTheyCanWin() {
     MyAgent redAgent = new MyAgent(game, true);
@@ -252,8 +258,32 @@ public class MyAgentTest {
     assertTrue(numberOfWins >= 45);
   }
 
-  // BONUS TODO: Write testCases to play against IntermediateAgent
+  // OUR BONUS CODE...
 
+
+  // Tests you can win against IntermediateAgent as yellow
+  @Test
+  public void testYellowWinningIntermediateAgent() {
+    Agent redAgent = new IntermediateAgent(game,true);
+    Agent yellowAgent = new MyAgent(game,false);
+    int numberOfWins = 0;
+    for (int i = 0; i < 50; i++) {
+      game.clearBoard();
+      while(!game.boardFull() && game.gameWon() == 'N') {
+        redAgent.move();
+        if (game.gameWon() != 'R') {
+          yellowAgent.move();
+        }
+      }
+      if (game.gameWon() == 'Y') {
+        numberOfWins++;
+      }
+    }
+    System.out.println("You won: " + numberOfWins + " games as Yellow against Intermediate Agent");
+    assertTrue(numberOfWins >= 45);
+  }
+
+  //BONUS TODO: Tests you can win against IntermediateAgent as red
   // SUPER BONUS TODO: Write testCases to playAgainst AdvancedAgent
 
   // SUPER BONUS TODO: Write testCases to playAgainst BrilliantAgent
