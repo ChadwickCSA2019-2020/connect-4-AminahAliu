@@ -123,7 +123,17 @@ public class MyAgentTest {
     assertEquals(redAgent.theyCanWin(), 2);
   }
 
-  // TODO: Write testTheyCanWinHorizontally
+  // NEWLY CODED BY US
+  //Tests they can win horizontally
+  @Test
+  public void testTheyCanWinHorizontally() {
+    MyAgent redAgent = new MyAgent(game, true);
+    MyAgent yellowAgent = new MyAgent(game, false);
+    game.clearBoard();
+    for (int i = 1; i <4; i++) {
+      redAgent.moveOnColumn(i);
+      yellowAgent.moveOnColumn(i);
+    }
 
   // TODO: Write testTheyCanWinDiagonally
 
