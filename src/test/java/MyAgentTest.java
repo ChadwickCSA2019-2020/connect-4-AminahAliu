@@ -170,7 +170,7 @@ public class MyAgentTest {
     int numberOfWins = 0;
     for (int i = 0; i < 50; i++) {
       game.clearBoard(); 
-      while(!game.boardFull() || game.gameWon() == 'N') {
+      while(!game.boardFull() && game.gameWon() == 'N') {
         redAgent.move();
         if (game.gameWon() != 'R') {
           yellowAgent.move();
@@ -194,7 +194,7 @@ public class MyAgentTest {
     int numberOfWins = 0;
     for (int i = 0; i < 50; i++) {
       game.clearBoard(); 
-      while(!game.boardFull() || game.gameWon() == 'N') {
+      while(!game.boardFull() && game.gameWon() == 'N') {
         redAgent.move();
         if (game.gameWon() != 'R') {
           yellowAgent.move();
@@ -218,7 +218,7 @@ public class MyAgentTest {
     int numberOfWins = 0;
     for (int i = 0; i < 50; i++) {
       game.clearBoard(); 
-      while(!game.boardFull() || game.gameWon() == 'N') {
+      while(!game.boardFull() && game.gameWon() == 'N') {
         redAgent.move();
         if (game.gameWon() != 'R') {
           yellowAgent.move();
@@ -242,7 +242,7 @@ public class MyAgentTest {
     int numberOfWins = 0;
     for (int i = 0; i < 50; i++) {
       game.clearBoard(); 
-      while(!game.boardFull() || game.gameWon() == 'N') {
+      while(!game.boardFull() && game.gameWon() == 'N') {
         redAgent.move();
         if (game.gameWon() != 'R') {
           yellowAgent.move();
