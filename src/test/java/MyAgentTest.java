@@ -306,6 +306,48 @@ public class MyAgentTest {
   }
 
   // SUPER BONUS TODO: Write testCases to playAgainst AdvancedAgent
+  @Test
+
+  public void testRedWinningAdvancedAgent() {
+    Agent redAgent = new MyAgent(game,true);
+    Agent yellowAgent = new AdvancedAgent(game, false);
+    int numberOfWins = 0;
+    for (int i = 0; i<50; i++) {
+      game.clearBoard();
+      while(!game.boardFull() && game.gameWon() == 'N') { 
+        redAgent.move();
+        if (game.gameWon() != 'R') {
+          yellowAgent.move();
+        }
+      }
+    }
+    if (game.gameWon() == 'R') {
+      numberOfWins++;
+    }
+    System.out.println("You won: " + numberOfWins + "games as Red against AdvancedAgent");
+    assertTrue(numberOfWins >= 45);
+  }
+
+  @Test
+  public void testYellowWinningAdvancedAgent() {
+    Agent redAgent = new AdvancedAgent(game, true);
+    Agent yellowAgent = new MyAgent(game,false); 
+    int numberOfWins = 0;
+    for (int i = 0; i<50; i++) {
+      game.clearBoard();
+      while(!game.boardFull() && game.gameWon() == 'N') { 
+        redAgent.move();
+        if (game.gameWon() != 'R') {
+          yellowAgent.move();
+        }
+      }
+    }
+    if (game.gameWon() == 'Y') {
+      numberOfWins++;
+    }
+    System.out.println("You won: " + numberOfWins + "games as Red against AdvancedAgent");
+    assertTrue(numberOfWins >= 45);
+  }
 
   // SUPER BONUS TODO: Write testCases to playAgainst BrilliantAgent
 
