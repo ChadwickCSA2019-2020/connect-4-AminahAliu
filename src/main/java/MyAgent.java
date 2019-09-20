@@ -41,7 +41,18 @@ public class MyAgent extends Agent {
    *
    */
   public void move() {
-
+//    wrap in for loop bc do this for every column
+//    drop a token in column check if win then reset and do again with each column 
+//    create a copy of the game
+//    type 
+  Connect4Game gameCopy = new Connect4Game(myGame);
+  
+//make agent playing  copy 
+  MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
+//    have agent move on culmn 
+//    check if win 
+//    if win return column won 
+//  if never win return -1                                                                                                                                                                                                                     
   }
 
   /**
