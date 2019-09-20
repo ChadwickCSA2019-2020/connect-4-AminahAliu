@@ -283,7 +283,28 @@ public class MyAgentTest {
     assertTrue(numberOfWins >= 45);
   }
 
-  //BONUS TODO: Tests you can win against IntermediateAgent as red
+  // Tests you can win against IntermediateAgent as red
+  @Test
+  public void testRedWinningIntermediateAgent() {
+    Agent redAgent = new MyAgent(game,true);
+    Agent yellowAgent = new IntermediateAgent(game,false); 
+    int numberOfWins = 0;
+    for (int i = 0; i < 50; i++) {
+      game.clearBoard();
+      while(!game.boardFull() && game.gameWon() == 'N') {
+        redAgent.move();
+        if (game.gameWon() != 'R') {
+          yellowAgent.move();
+        }
+      }
+      if (game.gameWon() == 'R') {
+        numberOfWins++;
+      }
+    }
+    System.out.println("You won: " + numberOfWins + " games as Red against Intermediate Agent");
+    assertTrue(numberOfWins >= 45);
+  }
+
   // SUPER BONUS TODO: Write testCases to playAgainst AdvancedAgent
 
   // SUPER BONUS TODO: Write testCases to playAgainst BrilliantAgent
