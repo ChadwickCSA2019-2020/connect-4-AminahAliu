@@ -97,13 +97,13 @@ public class MyAgentTest {
     game.clearBoard();
     for (int i = 1; i < 3; i++) {
 
-      for (int i = 1; i < 3; i++) {
-        redAgent.moveOnColumn(i);
-        yellowAgent.moveOnColumn(i);
+      for (int j = 1; j < 3; j++) {
+        redAgent.moveOnColumn(j);
+        yellowAgent.moveOnColumn(j);
       }
-      for (int i = 3; i < 5; i++) {
-        yellowAgent.moveOnColumn(i);
-        redAgent.moveOnColumn(i);
+      for (int k = 3; k < 5; k++) {
+        yellowAgent.moveOnColumn(k);
+        redAgent.moveOnColumn(k);
       }
     }
 
@@ -371,7 +371,6 @@ public class MyAgentTest {
     System.out.println("You won: " + numberOfWins + "games as Red against BrilliantAgent");
     assertTrue(numberOfWins >= 45);
   }
-}
 
 @Test
 public void testRedWinningBrilliantAgent() {
@@ -392,4 +391,6 @@ public void testRedWinningBrilliantAgent() {
   }
   System.out.println("You won: " + numberOfWins + "games as Red against BrilliantAgent");
   assertTrue(numberOfWins >= 45);
+}
+
 }
