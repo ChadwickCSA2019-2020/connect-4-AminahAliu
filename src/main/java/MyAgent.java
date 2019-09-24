@@ -1,12 +1,3 @@
-//agent needs to use 
-//Connect4Slot.getSlot(int i);
-//Connect4Slot.getRowCount(); 
-//Connect4Slot.getIsFull()
-//Connect4Column.getColumn(int i)
-//Connect4Column.getColumnCount()
-//Connect4Column.getRowCount()
-//
-
 
 import java.util.Random;
 /**
@@ -58,10 +49,20 @@ public class MyAgent extends Agent {
       moveOnColumn(theyCanWin());
     }
     else {
-      
-      
-      
-      
+    //agent needs to use 
+    //Connect4Slot.getSlot(int i);
+    //Connect4Slot.getRowCount(); 
+    //Connect4Slot.getIsFull()
+    //Connect4Column.getColumn(int i)
+    //Connect4Column.getColumnCount()
+    //Connect4Column.getRowCount()
+    //Connect4Slot.getIsFilled().
+    //Connect4Slot.getIsRed()
+    //Connect4Slot.addRed()/ addYellow()
+
+    //MyAgent.getLowestEmptyIndex()
+
+ 
       moveOnColumn(randomMove());
      
     }
