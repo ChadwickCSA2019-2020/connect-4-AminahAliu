@@ -1,7 +1,17 @@
+//agent needs to use 
+//Connect4Slot.getSlot(int i);
+//Connect4Slot.getRowCount(); 
+//Connect4Slot.getIsFull()
+//Connect4Column.getColumn(int i)
+//Connect4Column.getColumnCount()
+//Connect4Column.getRowCount()
+//
+
+
 import java.util.Random;
 /**
  * Describe your basic strategy here.
- * @author <your Github username>
+ * @author <AminahAliu>
  *
  */
 public class MyAgent extends Agent {
@@ -41,18 +51,22 @@ public class MyAgent extends Agent {
    *
    */
   public void move() {
-//    wrap in for loop bc do this for every column
-//    drop a token in column check if win then reset and do again with each column 
-//    create a copy of the game
-//    type 
-  Connect4Game gameCopy = new Connect4Game(myGame);
-  
-//make agent playing  copy 
-  MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
-//    have agent move on culmn 
-//    check if win 
-//    if win return column won 
-//  if never win return -1                                                                                                                                                                                                                     
+    if (iCanWin()>-1) {
+      moveOnColumn(iCanWin());
+    }
+    else if (theyCanWin()>-1) {
+      moveOnColumn(theyCanWin());
+    }
+    else {
+      
+      
+      
+      
+      moveOnColumn(randomMove());
+     
+    }
+
+                                                                                                                                                                                                                      
   }
 
   /**
@@ -120,9 +134,22 @@ public class MyAgent extends Agent {
    * @return the column that would allow the agent to win.
    */
   public int iCanWin() {
-    return 0;
-  }
+    //loop through each column
+    for(int i=0; i<myGame.getColumnCount(); i++) {
+      Connect4Game gameCopy = new Connect4Game(myGame);
+      MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
+      //for each column index moveoncolumn
+      agentCopy.moveOnColumn(i);   
+      if (iAmRed && gameCopy.gameWon() == 'R'){
+        return i; 
+      }
+      else if (!iAmRed && gameCopy.gameWon() =='Y') {
+        return i;
+      }
 
+    }
+    return -1; 
+  }
   /**
    * Returns the column that would allow the opponent to win.
    *
@@ -133,7 +160,21 @@ public class MyAgent extends Agent {
    * @return the column that would allow the opponent to win.
    */
   public int theyCanWin() {
-    return 0;
+//loop through each column
+    for(int i=0; i<myGame.getColumnCount(); i++) {
+      Connect4Game gameCopy = new Connect4Game(myGame);
+      MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
+      //for each column index moveoncolumn
+      agentCopy.moveOnColumn(i);   
+      if (iAmRed && gameCopy.gameWon() == 'Y'){
+        return i; 
+      }
+      else if (!iAmRed && gameCopy.gameWon() =='R') {
+        return i;
+      }
+      
+    }
+    return -1;
   }
 
   /**
