@@ -47,7 +47,7 @@ public class MyAgentTest {
       yellowAgent.moveOnColumn(1);   
     }
 
-    assertEquals(redAgent.iCanWin(), 2);
+    assertEquals(2, redAgent.iCanWin());
 
   }
 
@@ -58,19 +58,18 @@ public class MyAgentTest {
     MyAgent yellowAgent = new MyAgent(game, false);
     game.clearBoard();
 
+    redAgent.moveOnColumn(0);
+    yellowAgent.moveOnColumn(1);
     redAgent.moveOnColumn(1);
     yellowAgent.moveOnColumn(2);
-    redAgent.moveOnColumn(2);
-    yellowAgent.moveOnColumn(3);
-    redAgent.moveOnColumn(4);
-    yellowAgent.moveOnColumn(3);
     redAgent.moveOnColumn(3);
-    yellowAgent.moveOnColumn(1);
-    redAgent.moveOnColumn(4);
-    yellowAgent.moveOnColumn(4);
-    redAgent.moveOnColumn(4); 
+    yellowAgent.moveOnColumn(2);
+    redAgent.moveOnColumn(2);
+    yellowAgent.moveOnColumn(0);
+    redAgent.moveOnColumn(3);
+    yellowAgent.moveOnColumn(3);
 
-    assertEquals(redAgent.iCanWin(), 4);
+    assertEquals(3,redAgent.iCanWin());
 
   }
 
@@ -85,7 +84,7 @@ public class MyAgentTest {
       yellowAgent.moveOnColumn(i);
     }
 
-    assertEquals(redAgent.iCanWin(), 4);
+    assertEquals(redAgent.iCanWin(), 0);
 
   }
 
@@ -136,12 +135,14 @@ public class MyAgentTest {
     MyAgent redAgent = new MyAgent(game, true);
     MyAgent yellowAgent = new MyAgent(game, false);
     game.clearBoard();
-    for (int i = 1; i <4; i++) {
+    for (int i = 0; i <3; i++) {
       redAgent.moveOnColumn(i);
       yellowAgent.moveOnColumn(i);
     }
-
-    assertEquals(redAgent.theyCanWin(), 4);
+    redAgent.moveOnColumn(0);
+    yellowAgent.moveOnColumn(3);
+    redAgent.moveOnColumn(1);
+    assertEquals(3,redAgent.theyCanWin());
   }
 
   //Tests they can win diagonally
@@ -150,16 +151,17 @@ public class MyAgentTest {
     MyAgent redAgent = new MyAgent(game, true);
     MyAgent yellowAgent = new MyAgent(game, false);
     game.clearBoard();
+    redAgent.moveOnColumn(2);
+    yellowAgent.moveOnColumn(3);
     redAgent.moveOnColumn(3);
-    yellowAgent.moveOnColumn(4);
-    redAgent.moveOnColumn(4);
-    yellowAgent.moveOnColumn(1);
-    for (int i = 1; i < 5; i++) {
-      yellowAgent.moveOnColumn(i);
+    yellowAgent.moveOnColumn(0);
+    for (int i = 0; i < 3; i++) {
       redAgent.moveOnColumn(i+1);
+      yellowAgent.moveOnColumn(i);
+     
     }
 
-    assertEquals(redAgent.theyCanWin(), 4);
+    assertEquals(redAgent.theyCanWin(), 3);
   }
 
   // Tests you can win against a Beginner agent as Red
