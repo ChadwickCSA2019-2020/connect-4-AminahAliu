@@ -49,8 +49,31 @@ public class MyAgent extends Agent {
       moveOnColumn(theyCanWin());
     }
     else {
-    //agent needs to use 
-    //Connect4Slot.getSlot(int i);
+ 
+      moveOnColumn(randomMove());
+      
+      // advancedStrategy()
+      
+     
+    }
+
+                                                                                                                                                                                                                      
+  }
+
+  public void advancedStrategy() {
+//    for(int i=0; i<myGame.getColumnCount(); i++) {
+//      Connect4Game gameCopy = new Connect4Game(myGame);
+//      MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
+//      //for each column index moveoncolumn
+//      agentCopy.moveOnColumn(i);   
+//      if (iAmRed && gameCopy.gameWon() == 'Y'){
+//        return i; 
+//      }
+//      else if (!iAmRed && gameCopy.gameWon() =='R') {
+//        return i;
+//      }
+//   ---------------   
+    //agent needs to use these methods
     //Connect4Slot.getRowCount(); 
     //Connect4Slot.getIsFull()
     //Connect4Column.getColumn(int i)
@@ -60,16 +83,15 @@ public class MyAgent extends Agent {
     //Connect4Slot.getIsRed()
     //Connect4Slot.addRed()/ addYellow()
 
-    //MyAgent.getLowestEmptyIndex()
+    //MyAgent.getLowestEmptyIndex()  
+    
+    
+    //1) if iAmRed && get is filled, Connect4Slot.getIsRed() move in any of the middle 3 colums
+    //2) connect4game.getcolumn().getisfilled
 
- 
-      moveOnColumn(randomMove());
-     
-    }
-
-                                                                                                                                                                                                                      
   }
-
+  
+  
   /**
    * Drops a token into a particular column so that it will fall to the bottom of the column.
    * If the column is already full, nothing will change.
@@ -164,7 +186,7 @@ public class MyAgent extends Agent {
 //loop through each column
     for(int i=0; i<myGame.getColumnCount(); i++) {
       Connect4Game gameCopy = new Connect4Game(myGame);
-      MyAgent agentCopy = new MyAgent(gameCopy, iAmRed);
+      MyAgent agentCopy = new MyAgent(gameCopy, !iAmRed);
       //for each column index moveoncolumn
       agentCopy.moveOnColumn(i);   
       if (iAmRed && gameCopy.gameWon() == 'Y'){
