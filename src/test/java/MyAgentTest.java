@@ -298,9 +298,10 @@ public class MyAgentTest {
         if (game.gameWon() != 'R') {
           yellowAgent.move();
         }
-      }
+      
       if (game.gameWon() == 'R') {
         numberOfWins++;
+      }
       }
     }
     System.out.println("You won: " + numberOfWins + " games as Red against Intermediate Agent");
