@@ -42,31 +42,36 @@ public class MyAgent extends Agent {
    *
    */
   public void move() {
-    if (iCanWin()>-1) {
+    myGame.getBoardMatrix();
+    if (iCanWin() > -1) {
       moveOnColumn(iCanWin());
     }
-    else if (theyCanWin()>-1) {
+    else if (theyCanWin() > -1) {
       moveOnColumn(theyCanWin());
     }
+
+    else if (!myGame.getColumn(3).getSlot(0).getIsFilled()) {
+      moveOnColumn(3);
+    }
+    else if (!myGame.getColumn(2).getSlot(0).getIsFilled()) {
+      moveOnColumn(2);
+    }
+    else if (!myGame.getColumn(4).getSlot(0).getIsFilled()) {
+      moveOnColumn(4);
+  }
     else {
-      advancedStrategy();
-    
-    }                                                                                                                                                                                                                     
+      moveOnColumn(randomMove());
+      }
   }
 
   public void advancedStrategy() {
-    
-    for(int y=2; y<5; y++) {
-      int x = 0;
-      if (myGame.getBoardMatrix()[x][y] == 'B') {
-        moveOnColumn(y);
-        break;
-      } 
-      else if(mySlot(x+1, y+1)) {
-        moveOnColumn(y);
+    int i = 4;
+    moveOnColumn(i);
+    i++;
         }
-    }
-  }
+   
+    
+ 
   
 //  return true or false, true when slot has our token false when it has the enemy's or return neutral if empty 
   public boolean mySlot(int a, int b) {
